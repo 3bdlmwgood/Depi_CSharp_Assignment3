@@ -81,7 +81,7 @@ namespace ConsoleApp1
 
         }
 
-        private static int _ReadNumberFromUser(int index)
+        private static int _ReadNumberFromUser(int index=1)
         {
             int Number;
             bool flag;
@@ -95,7 +95,7 @@ namespace ConsoleApp1
             return Number;
         }
 
-        private static void ReturnSumandSub4Parameters(int num1,int num2,int num3,int num4,out int sum,out int sub)
+        private static void _ReturnSumandSub4Parameters(int num1,int num2,int num3,int num4,out int sum,out int sub)
         {
             sum = num1 + num2 ;
             sub = num3 - num4 ;
@@ -108,15 +108,29 @@ namespace ConsoleApp1
             int num3 = _ReadNumberFromUser(3);
             int num4 = _ReadNumberFromUser(4);
 
-            ReturnSumandSub4Parameters(num1,num2,num3,num4,out int Sum , out int Sub);
+            _ReturnSumandSub4Parameters(num1,num2,num3,num4,out int Sum , out int Sub);
 
             Console.WriteLine($"Sum: {num1} + {num2} = {Sum}");
             Console.WriteLine($"Sub: {num3} - {num4} = {Sub}");
         }
 
+        private static int _ReadNumberWithoutIndex()
+        {
+            int Number;
+            bool flag;
+            do
+            {
+                Console.Write($"Enter Number: ");
+                flag = int.TryParse(Console.ReadLine(), out Number);
+
+            } while (!flag);
+
+            return Number;
+        }
+
         static void Q4()
         {
-            int Number = _ReadNumberFromUser(1);
+            int Number = _ReadNumberWithoutIndex();
 
             int Sum = 0;
 
@@ -128,6 +142,29 @@ namespace ConsoleApp1
             } while (Number!=0);
 
             Console.WriteLine($"The Sum of the Digits of the Number [{Number}]  = {Sum}");
+        }
+
+        private static bool _IsPrime(int num)
+        {
+            if ( num <= 1 ) return false;
+
+            if ( num == 2 || num ==3 ) return true;
+            
+            for (int i = 2; i <= num / 2; i++) 
+            {
+                if (num % i == 0) 
+                    return false;
+            }
+
+            return true;
+        }
+
+        static void Q5()
+        {
+            int number = _ReadNumberWithoutIndex();
+
+            Console.WriteLine((_IsPrime(number)) ? "Prime" : "Not Prime");
+
         }
 
         static void Main(string[] args)
@@ -150,7 +187,13 @@ namespace ConsoleApp1
             Q4();
             PrintLineSpace();
 
+            PrintHeader("Question 5 (Check Prime)");
+            Q5();
+            PrintLineSpace();
 
+            PrintHeader("Question 5 (Check Prime)");
+            Q6();
+            PrintLineSpace();
 
 
 
