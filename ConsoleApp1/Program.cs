@@ -114,6 +114,22 @@ namespace ConsoleApp1
             Console.WriteLine($"Sub: {num3} - {num4} = {Sub}");
         }
 
+        static void Q4()
+        {
+            int Number = _ReadNumberFromUser(1);
+
+            int Sum = 0;
+
+            do
+            {
+                Sum += Number % 10;
+                Number = Number / 10;
+                    
+            } while (Number!=0);
+
+            Console.WriteLine($"The Sum of the Digits of the Number [{Number}]  = {Sum}");
+        }
+
         static void Main(string[] args)
         {
             #region Functions
@@ -128,6 +144,10 @@ namespace ConsoleApp1
 
             PrintHeader("Question 3 (4 Parameters from User)");
             Q3();
+            PrintLineSpace();
+
+            PrintHeader("Question 4 (Digits Sum)");
+            Q4();
             PrintLineSpace();
 
 
