@@ -1,4 +1,5 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleApp1
 {
@@ -296,6 +297,33 @@ namespace ConsoleApp1
             }
         }
 
+        struct Person
+        {
+            public string Name;
+            public int Age;
+
+            public Person(string Name,int Age)
+            {
+                this.Name = Name;
+                this.Age = Age;
+            }
+        }
+
+        static void Q2_()
+        {
+            Person[] People =
+            {
+                new Person("Abdallah",21),
+                new Person("Mohamed",45),
+                new Person("Ahmed",33)
+            };
+
+            foreach (Person person in People)
+            {
+                Console.WriteLine($"Name: {person.Name} - Age: {person.Age}");
+            }
+        }
+
         static void RunFunctions()
         {
             PrintHeader("Question 1 (Value Type - Value vs Ref)");
@@ -338,7 +366,7 @@ namespace ConsoleApp1
             PrintLineSpace();
 
             PrintHeader("Question 2 (Person Struct)");
-            Q1_();
+            Q2_();
             PrintLineSpace();
 
         }
