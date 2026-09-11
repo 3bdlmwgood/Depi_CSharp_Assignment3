@@ -167,6 +167,39 @@ namespace ConsoleApp1
 
         }
 
+        static void _MinMaxArray(int[] Arr  ,ref int Min,ref int Max)
+        {
+            for (int i = 1; i < Arr.Length; i++)
+            {
+                if (Arr[i] < Min)
+                    Min = Arr[i];
+
+                if (Arr[i] > Max)
+                    Max = Arr[i];
+            }
+
+        }
+
+        static void Q6()
+        {
+            int[] StoredArray = { 90, 50, 70, 30, 80, 100, 60, 20, 40 ,10};
+
+            int Min = StoredArray[0],Max =StoredArray[0];
+
+            _MinMaxArray(StoredArray,ref Min,ref Max);
+
+            Console.Write("Array Elements : [ ");
+            foreach (int element in StoredArray)
+            {
+                Console.Write(element + " ");
+            }
+
+            Console.WriteLine("]\n");
+            Console.WriteLine($"Minimum in Array = {Min}");
+            Console.WriteLine($"Maximum in Array = {Max}");
+                
+        }
+
         static void Main(string[] args)
         {
             #region Functions
@@ -191,7 +224,7 @@ namespace ConsoleApp1
             Q5();
             PrintLineSpace();
 
-            PrintHeader("Question 5 (Check Prime)");
+            PrintHeader("Question 6 (MinMaxArray)");
             Q6();
             PrintLineSpace();
 
