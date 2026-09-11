@@ -460,6 +460,51 @@ namespace ConsoleApp1
             
         }
 
+        private static void _ReadPeopleData(ref Person[] People)
+        {
+            for (int i = 0; i < People.Length; i++)
+            {
+                Console.WriteLine($"Enter Person [{i + 1}]");
+
+                Console.Write("Name: ");
+                People[i].Name = Console.ReadLine();
+
+                People[i].Age = _ReadNumberWithoutIndex();
+
+                Console.WriteLine();
+            }
+        }
+
+        private static Person _GetOldestPerson(Person[] People)
+        {
+            Person OldestPerson = People[0];
+
+            for (int i = 1; i < People.Length; i++)
+            {
+                if (People[i].Age > OldestPerson.Age)
+                {
+                    OldestPerson = People[i];
+                }
+            }
+
+            return OldestPerson;
+        }
+
+        static void Q7_()
+        {
+            //Using the Struct Person in Q2
+
+            Person[] people = new Person[3];
+
+            _ReadPeopleData(ref people);
+
+            Person Oldest = _GetOldestPerson(people);
+
+            Console.WriteLine($"Oldest Person:"); 
+            Console.WriteLine($"Name {Oldest.Name} - Age {Oldest.Age}"); 
+
+        }
+
         static void RunFunctions()
         {
             PrintHeader("Question 1 (Value Type - Value vs Ref)");
@@ -520,6 +565,11 @@ namespace ConsoleApp1
             PrintHeader("Question 6 (Point Struct)");
             Q6_();
             PrintLineSpace();
+
+            PrintHeader("Question 7 (Person Struct)");
+            Q7_();
+            PrintLineSpace();
+
         }
 
         static void Main(string[] args)
