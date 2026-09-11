@@ -415,6 +415,51 @@ namespace ConsoleApp1
                 Console.WriteLine($"{colorInput}: NOT Primary Color");
         }
 
+        struct Point
+        {
+            public double X {  get; set; }
+            public double Y { get; set; }
+        }
+
+        private static double _CalculateDistance(Point P1, Point P2)
+        {
+            double X_Diff = P2.X - P1.X;
+            double Y_Diff = P2.Y - P1.Y;
+
+            return Math.Sqrt((X_Diff * X_Diff) +(Y_Diff * Y_Diff));
+        }
+
+        private static double _ReadNumberForPoint(string XY)
+        {
+            double Number;
+            bool flag;
+            do
+            {
+                Console.Write($"{XY}:");
+                flag = double.TryParse(Console.ReadLine(), out Number);
+
+            } while (!flag);
+
+            return Number;
+        }
+
+        static void Q6_() 
+        {
+            Console.WriteLine("Enter Point[1]:");
+            Point P1 = new Point();
+            P1.X = _ReadNumberForPoint("X");
+            P1.Y = _ReadNumberForPoint("Y");
+
+
+            Console.WriteLine("Enter Point[2]:");
+            Point P2 = new Point();
+            P2.X = _ReadNumberForPoint("X");
+            P2.Y = _ReadNumberForPoint("Y");
+
+            Console.WriteLine($"Distance = {_CalculateDistance(P1,P2)}");
+            
+        }
+
         static void RunFunctions()
         {
             PrintHeader("Question 1 (Value Type - Value vs Ref)");
@@ -470,6 +515,10 @@ namespace ConsoleApp1
 
             PrintHeader("Question 5 (Colors Enum)");
             Q5_();
+            PrintLineSpace();
+
+            PrintHeader("Question 6 (Point Struct)");
+            Q6_();
             PrintLineSpace();
         }
 
