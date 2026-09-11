@@ -381,6 +381,40 @@ namespace ConsoleApp1
 
         }
 
+        static void Q4_()
+        {
+
+        }
+
+        enum Colors
+        {
+            Red,Green, Blue
+        }
+
+        private static string _ReadColorFromUser()
+        {
+            string Season;
+            do
+            {
+                Console.Write($"Enter Color: ");
+                Season = Console.ReadLine();
+                Season.ToLower();
+
+            } while (false);
+
+            return Season;
+        }
+
+        static void Q5_()
+        {
+            string colorInput = _ReadColorFromUser();
+            
+            if (Enum.TryParse(colorInput,true,out Colors color))
+                Console.WriteLine($"{color}: Primary Color");
+            else
+                Console.WriteLine($"{colorInput}: NOT Primary Color");
+        }
+
         static void RunFunctions()
         {
             PrintHeader("Question 1 (Value Type - Value vs Ref)");
@@ -428,6 +462,14 @@ namespace ConsoleApp1
 
             PrintHeader("Question 3 (Season Enum)");
             Q3_();
+            PrintLineSpace();
+
+            PrintHeader("Question 4 (Permissions)");
+            Q4_();
+            PrintLineSpace();
+
+            PrintHeader("Question 5 (Colors Enum)");
+            Q5_();
             PrintLineSpace();
         }
 
