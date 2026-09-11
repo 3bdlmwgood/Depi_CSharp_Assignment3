@@ -272,15 +272,37 @@ namespace ConsoleApp1
             Console.WriteLine($"Text After Changing: {NewText}");
         }
 
-        static void Main(string[] args)
-        {
-            #region Functions
 
+        //---------------------------------------------------------------------------------------
+
+        enum WeekDays
+        {
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday,
+            Sunday
+        }
+
+        static void Q1_()
+        {
+            Console.Write("All Days Week : ");
+
+            foreach (WeekDays day in Enum.GetValues(typeof(WeekDays)))
+            {
+                Console.Write(day + " ");
+            }
+        }
+
+        static void RunFunctions()
+        {
             PrintHeader("Question 1 (Value Type - Value vs Ref)");
             Q1();
             PrintLineSpace();
 
-            PrintHeader("Question 2 (Reference Type - Value vs Ref)"); 
+            PrintHeader("Question 2 (Reference Type - Value vs Ref)");
             Q2();
             PrintLineSpace();
 
@@ -307,12 +329,29 @@ namespace ConsoleApp1
             PrintHeader("Question 8 (Change Char)");
             Q8();
             PrintLineSpace();
+        }
 
+        static void RunEnums_Structs()
+        {
+            PrintHeader("Question 1 (WeekDays Enum)");
+            Q1_();
+            PrintLineSpace();
+
+            PrintHeader("Question 2 (Person Struct)");
+            Q1_();
+            PrintLineSpace();
+
+        }
+
+        static void Main(string[] args)
+        {
+            #region Functions
+            //RunFunctions();
             #endregion
 
 
             #region Enum & Struct
-
+            RunEnums_Structs();
             #endregion
         }
     }
