@@ -278,13 +278,7 @@ namespace ConsoleApp1
 
         enum WeekDays
         {
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday,
-            Sunday
+            Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
         }
 
         static void Q1_()
@@ -322,6 +316,69 @@ namespace ConsoleApp1
             {
                 Console.WriteLine($"Name: {person.Name} - Age: {person.Age}");
             }
+        }
+
+        enum Season
+        {
+            Spring,Summer,Autumn,Winter
+        }
+
+        private static string _ReadSeasonFromUser()
+        {
+            string Season;
+            do
+            {
+                Console.Write($"Enter Season: ");
+                Season = Console.ReadLine();
+                Season.ToLower();
+
+            } while (Season!= "spring" && Season!= "summer" && Season!="autumn" && Season !="winter");
+
+            return Season;
+        }
+
+        private static Season _CovertTextToSeason(string season)
+        {
+            if (season == "summer")
+                return Season.Summer;
+            if (season == "winter")
+                return Season.Winter;
+            if (season == "spring")
+                return Season.Spring;
+            else
+                return Season.Autumn;
+        }
+
+        private static string _ReturnRangeForSeason(Season Season)
+        {
+            switch (Season)
+            {       
+                case Season.Spring:
+                    return "March to May";
+                    break;
+                case Season.Summer:
+                    return "June to August";
+                    break;
+                case Season.Autumn:
+                    return "September to November";
+                    break;
+                case Season.Winter:
+                    return "December to February";
+                    break;
+                default:
+                    return "No Range";
+                    break;
+            }
+        }
+
+        static void Q3_()
+        {
+            string seasonText = _ReadSeasonFromUser();
+
+            Season season = _CovertTextToSeason(seasonText);
+
+            Console.WriteLine($"{seasonText}: " + _ReturnRangeForSeason(season));
+
         }
 
         static void RunFunctions()
@@ -369,6 +426,9 @@ namespace ConsoleApp1
             Q2_();
             PrintLineSpace();
 
+            PrintHeader("Question 3 (Season Enum)");
+            Q3_();
+            PrintLineSpace();
         }
 
         static void Main(string[] args)
