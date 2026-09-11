@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ConsoleApp1
 {
     internal class Program
     {
@@ -56,7 +58,6 @@
             value = "3bdlmwgood";
         }
 
-
         static void Q2()
         {
             string text = "Abdallah";
@@ -80,6 +81,39 @@
 
         }
 
+        private static int _ReadNumberFromUser(int index)
+        {
+            int Number;
+            bool flag;
+            do
+            {
+                Console.Write($"Enter Number [{index}]: ");
+                flag = int.TryParse(Console.ReadLine(),out Number);
+
+            } while (!flag);
+
+            return Number;
+        }
+
+        private static void ReturnSumandSub4Parameters(int num1,int num2,int num3,int num4,out int sum,out int sub)
+        {
+            sum = num1 + num2 ;
+            sub = num3 - num4 ;
+        }
+
+        static void Q3()
+        {
+            int num1 = _ReadNumberFromUser(1);
+            int num2 = _ReadNumberFromUser(2);
+            int num3 = _ReadNumberFromUser(3);
+            int num4 = _ReadNumberFromUser(4);
+
+            ReturnSumandSub4Parameters(num1,num2,num3,num4,out int Sum , out int Sub);
+
+            Console.WriteLine($"Sum: {num1} + {num2} = {Sum}");
+            Console.WriteLine($"Sub: {num3} - {num4} = {Sub}");
+        }
+
         static void Main(string[] args)
         {
             #region Functions
@@ -91,6 +125,12 @@
             PrintHeader("Question 2 (Ref Parameters)");
             Q2();
             PrintLineSpace();
+
+            PrintHeader("Question 3 (4 Parameters from User)");
+            Q3();
+            PrintLineSpace();
+
+
 
 
 
