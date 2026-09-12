@@ -381,8 +381,43 @@ namespace ConsoleApp1
 
         }
 
+        [Flags]
+        enum Permissions
+        {
+            None = 0,Read = 1,Write = 2,Delete = 4,Execute = 8
+        }
+
+        private static void _AddPermmision(ref Permissions Permissions)
+        {
+            Permissions = Permissions | Permissions.Read;
+            Permissions = Permissions | Permissions.Write;
+
+            Console.WriteLine($"Permissions: {Permissions}");
+        }
+
+        private static void _CheckPermision(Permissions Permissions)
+        {
+            if ((Permissions & Permissions.Read) == Permissions.Read)
+            {
+                Console.WriteLine("Read Permission Exists");
+            }
+        }
+
+        private static void _RemovePermision(ref Permissions Permissions)
+        {
+            Permissions = Permissions & ~Permissions.Write;
+            Console.WriteLine($"After Removing Write: {Permissions}");
+        }
+
         static void Q4_()
         {
+            Permissions permissions = Permissions.None;
+
+            _AddPermmision(ref permissions);
+
+            _CheckPermision(permissions);
+            
+            _RemovePermision(ref permissions);
 
         }
 
@@ -397,8 +432,7 @@ namespace ConsoleApp1
             do
             {
                 Console.Write($"Enter Color: ");
-                Season = Console.ReadLine();
-                Season.ToLower();
+                Season = Console.ReadLine().ToLower();
 
             } while (false);
 
@@ -574,8 +608,9 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
+            
             #region Functions
-            //RunFunctions();
+            RunFunctions();
             #endregion
 
 
